@@ -5,3 +5,11 @@ res://pistol/muzzle_flash/muzzle_flash.tscn
 res://smoke_explosion/smoke_explosion.tscn
 res://player.tscn
 res://player.gd
+res://addons/colorpicker_presets/colorpicker_presets.gd
+res://characters/happy_boo/happy_boo.gd
+res://characters/slime/slime.gd
+res://pistol/impact/impact.gd
+res://pistol/muzzle_flash/muzzle_flash.gd
+res://smoke_explosion/smoke_explosion.gd
+res://README.md
+res://survivors_game.tscn
