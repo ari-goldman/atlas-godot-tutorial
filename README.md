@@ -17,3 +17,9 @@ Tutorial:
 
 ### 9/8
 - reorganize files
+- add XP system
+	- mobs drop XP
+	- XP attractes to player when in range
+	- player levels up at certain XP values
+	- player shoots faster on level
+- 3 hours (I lost a lot of work the the git gods)

@@ -16,8 +16,16 @@ func take_damage():
 	%Slime.play_hurt()
 	
 	if health == 0:
-		queue_free()
-		const SMOKE_EXPLOSION = preload("res://smoke_explosion/smoke_explosion.tscn")
-		var smoke = SMOKE_EXPLOSION.instantiate()
-		get_parent().add_child(smoke)
-		smoke.global_position = global_position
+		call_deferred("die") # not sure why i needed this, but errors were thrown elsewise
+
+func die():
+	queue_free()
+	const SMOKE_EXPLOSION_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
+	var smoke = SMOKE_EXPLOSION_SCENE.instantiate()
+	get_parent().add_child(smoke)
+	smoke.global_position = global_position
+	
+	const XP_SCENE = preload("res://xp/xp.tscn")
+	var xp = XP_SCENE.instantiate()
+	get_parent().add_child(xp)
+	xp.global_position = global_position

@@ -20,3 +20,6 @@ func shoot():
 func _on_timer_timeout():
 	if !get_overlapping_bodies().is_empty():
 		shoot()
+
+func multiply_shoot_timer(mult: float):
+	%Timer.wait_time *= mult

@@ -22,8 +22,18 @@ func _physics_process(delta):
 	var overlapping_mobs: Array[Node2D] = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%ProgressBar.value = health
+		%HealthBar.value = health
 	
 		if health <= 0.0:
 			health_depleted.emit()
-	
+
+
+
+func _on_xp_collector_xp_collected():
+	%XPBar.value += 1
+	if %XPBar.value >= %XPBar.max_value:
+		## level up
+		%XPBar.value -= %XPBar.max_value
+		%XPBar.max_value *= 1.2
+		%Gun.multiply_shoot_timer(0.9)
+		
