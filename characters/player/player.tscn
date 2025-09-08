@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhhjdcs0kqhrx"]
+[gd_scene load_steps=12 format=3 uid="uid://dhhjdcs0kqhrx"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b8l34sppidgnx" path="res://characters/player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://bedfuu4x0xntb" path="res://pistol/gun.tscn" id="3_i3pqv"]
+[ext_resource type="Script" path="res://xp/xp_collector.gd" id="4_5dc8e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 31.0
@@ -15,10 +16,20 @@ bg_color = Color(0.152941, 0.168627, 0.188235, 1)
 corner_radius_top_left = 8
 corner_radius_bottom_right = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dc8e"]
+bg_color = Color(0.132531, 0.630502, 0.956021, 1)
+corner_radius_top_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
 bg_color = Color(0.388235, 0.8, 0.372549, 1)
 corner_radius_top_left = 8
 corner_radius_bottom_right = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixbpm"]
+radius = 239.002
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6leb"]
+radius = 21.0238
 
 [node name="Player" type="CharacterBody2D"]
 platform_floor_layers = 4294901760
@@ -33,6 +44,7 @@ shape = SubResource("CircleShape2D_onrkg")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("3_i3pqv")]
+unique_name_in_owner = true
 position = Vector2(1, -28)
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -44,7 +56,18 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_i3pqv")
 debug_color = Color(0.939488, 0.168665, 0.456704, 0.42)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="XPBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -89.0
+offset_top = -145.0
+offset_right = 89.0
+offset_bottom = -118.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hqtel")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5dc8e")
+max_value = 5.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -89.0
 offset_top = -132.0
@@ -54,3 +77,26 @@ theme_override_styles/background = SubResource("StyleBoxFlat_hqtel")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i3pqv")
 value = 100.0
 show_percentage = false
+
+[node name="XPCollector" type="Node2D" parent="."]
+script = ExtResource("4_5dc8e")
+
+[node name="MagnetArea" type="Area2D" parent="XPCollector"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XPCollector/MagnetArea"]
+shape = SubResource("CircleShape2D_ixbpm")
+debug_color = Color(0.293953, 0.618477, 0.339365, 0.42)
+
+[node name="CollectionArea" type="Area2D" parent="XPCollector"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XPCollector/CollectionArea"]
+shape = SubResource("CircleShape2D_c6leb")
+debug_color = Color(0.0953786, 0.648504, 1.15514e-06, 0.42)
+
+[connection signal="xp_collected" from="XPCollector" to="." method="_on_xp_collected"]
+[connection signal="area_entered" from="XPCollector/MagnetArea" to="XPCollector" method="_on_magnet_area_area_entered"]
+[connection signal="area_entered" from="XPCollector/CollectionArea" to="XPCollector" method="_on_collection_area_area_entered"]
