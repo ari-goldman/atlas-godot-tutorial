@@ -22,3 +22,12 @@ res://bullet.gd
 res://bullet.tscn
 res://smoke_explosion/smoke_explosion.gdshader
 res://survivors_game.gd
+res://pistol/bullet/bullet.tscn
+res://player/player.tscn
+res://characters/mob.tscn
+res://characters/player/player.tscn
+res://trees/pine_tree.tscn
+res://characters/mob/mob.tscn
+res://pistol/gun.tscn
+res://pistol/gun.gd
+res://characters/mob/mob.gd

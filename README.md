@@ -14,3 +14,6 @@ Tutorial:
 ### 9/7
 - finished tutorial project
 - 1.5 hours
+
+### 9/8
+- reorganize files

@@ -21,4 +21,3 @@ func take_damage():
 		var smoke = SMOKE_EXPLOSION.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
-	

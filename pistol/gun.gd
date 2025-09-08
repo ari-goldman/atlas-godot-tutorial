@@ -9,7 +9,7 @@ func _physics_process(delta):
 		look_at(target_enemy.global_position)
 
 func shoot():
-	const BULLET = preload("res://bullet.tscn")
+	const BULLET = preload("res://pistol/bullet/bullet.tscn")
 	var new_bullet: Bullet = BULLET.instantiate()
 	new_bullet.global_position = %"Shooting Point".global_position
 	new_bullet.global_rotation = %"Shooting Point".global_rotation
