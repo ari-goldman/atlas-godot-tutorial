@@ -8,4 +8,9 @@ Tutorial:
 ## Logs
 ### 9/3
 - initialized repository with project files
-- 
+- started tutorial
+- 0.5 hour
+
+### 9/7
+- finished tutorial project
+- 1.5 hours

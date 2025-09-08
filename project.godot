@@ -75,6 +75,7 @@ Settings/Show_Tooltips=true
 [application]
 
 config/name="Your First 2D Game With Godot 4: START (GDQuest)"
+run/main_scene="uid://c0qt3he0fpv3u"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 
@@ -122,6 +123,7 @@ shoot={
 
 [layer_names]
 
+2d_physics/layer_2="Enemies"
 3d_physics/layer_2="player"
 
 [rendering]

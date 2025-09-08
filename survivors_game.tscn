@@ -1,3 +1,100 @@
-[gd_scene format=3 uid="uid://c0qt3he0fpv3u"]
+[gd_scene load_steps=5 format=3 uid="uid://c0qt3he0fpv3u"]
+
+[ext_resource type="PackedScene" uid="uid://dhhjdcs0kqhrx" path="res://player.tscn" id="1_3cish"]
+[ext_resource type="Script" uid="uid://cnnidspp840pg" path="res://survivors_game.gd" id="1_qqaft"]
+[ext_resource type="PackedScene" uid="uid://c827w6jputxaq" path="res://pine_tree.tscn" id="2_y3pti"]
+
+[sub_resource type="Curve2D" id="Curve2D_l26od"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -86, -33, 0, 0, 0, 0, 1992, -29, 0, 0, 0, 0, 1979, 1187, 0, 0, 0, 0, -84, 1180, 0, 0, 0, 0, -87, -29)
+}
+point_count = 5
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_qqaft")
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.529412)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -38.0
+offset_right = 232.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Game Over!"
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_scale = 585.821
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player" parent="." instance=ExtResource("1_3cish")]
+position = Vector2(909, 561)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-909, -561)
+curve = SubResource("Curve2D_l26od")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-86, -33)
+rotation = 0.00192493
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1570, 433)
+
+[node name="PineTree" parent="Trees" instance=ExtResource("2_y3pti")]
+position = Vector2(-1300, -98)
+
+[node name="PineTree2" parent="Trees" instance=ExtResource("2_y3pti")]
+position = Vector2(-940, 351)
+
+[node name="PineTree3" parent="Trees" instance=ExtResource("2_y3pti")]
+position = Vector2(-1015, 400)
+
+[node name="PineTree4" parent="Trees" instance=ExtResource("2_y3pti")]
+position = Vector2(-875, 446)
+
+[node name="PineTree5" parent="Trees" instance=ExtResource("2_y3pti")]
+position = Vector2(-58, 101)
+
+[node name="PineTree6" parent="Trees" instance=ExtResource("2_y3pti")]
+position = Vector2(-149, 174)
+
+[node name="PineTree7" parent="Trees" instance=ExtResource("2_y3pti")]
+position = Vector2(-60, 219)
+
+[node name="PineTree8" parent="Trees" instance=ExtResource("2_y3pti")]
+
+[node name="MobSpawnTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
