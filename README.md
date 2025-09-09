@@ -1,5 +1,12 @@
 # atlas-godot-tutorial
 
+## Info
+- Total time: ~8 hours
+- Features added:
+	- XP system
+	- charging enemy variant
+	- sound effects
+
 ## Asset Sources
 - Tutorial:
 	- Video: https://www.youtube.com/watch?v=GwCiGixlqiU
@@ -11,7 +18,7 @@
 ### 9/3
 - initialized repository with project files
 - started tutorial
-- 0.5 hour
+- 0.5 hours
 
 ### 9/7
 - finished tutorial project
@@ -24,7 +31,7 @@
 	- XP attractes to player when in range
 	- player levels up at certain XP values
 	- player shoots faster on level
-- 3 hours (I lost a lot of work the the git gods)
+- 3 hours (I lost a lot of work to the git gods)
 
 ### 9/9
 - added charging enemy
