@@ -15,3 +15,6 @@ res://characters/charging_mob/charging_mob.tscn
 res://survivors_game.gd
 res://README.md
 res://characters/player/player.gd
+res://pistol/bullet/bullet.gd
+res://characters/happy_boo/happy_boo.gd
+res://characters/mob/mob.gd
