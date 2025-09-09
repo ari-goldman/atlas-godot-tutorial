@@ -5,9 +5,20 @@
 ## Info
 - Total time: ~9 hours
 - Features added:
-	- XP system
+	- XP and leveling system
+		- all enemies drop XP
+  		- when close enough, the XP will magnetize to the player
+    	- when picked up, the XP will slowly fill the blue bar above the player
+     	- when the bar is full, the player levels up and their rate of fire increases, but so does the enemies' spawn rate
 	- charging enemy variant
+ 		- walks towards the player until it's close enough, when it charges the player
+   		- the player can dodge out of the way by moving to either side of it's charge
+    	- after charging, goes on a brief cooldown until it can move again
+     	- implemented using a state machine (which I've never done until now)
 	- sound effects
+		- effects on shoot, XP pickup, slime death, player damage, and player death
+ 	- GitHub action for web deployment
+  		- see link at the top!
 
 ## Asset Sources
 - Tutorial:
