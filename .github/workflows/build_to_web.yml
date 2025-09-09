@@ -1,14 +1,14 @@
 ## https://github.com/abarichello/godot-ci/blob/master/.github/workflows/godot-ci.yml#L59-L92
 
 name: "godot-ci export"
-on: push
+on: workflow_dispatch
 
 # NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".
 
 env:
   GODOT_VERSION: 4.4.1
   EXPORT_NAME: godot-project
-  PROJECT_PATH: godot-project
+  PROJECT_PATH: .
 
 jobs:
   export-web:
