@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bedfuu4x0xntb"]
+[gd_scene load_steps=5 format=3 uid="uid://bedfuu4x0xntb"]
 
 [ext_resource type="Script" uid="uid://fsnskg1p04bi" path="res://pistol/gun.gd" id="1_dk5gl"]
 [ext_resource type="Texture2D" uid="uid://cswb5do8rrj7q" path="res://pistol/pistol.png" id="1_vk1bi"]
+[ext_resource type="AudioStream" uid="uid://tqeru80j051o" path="res://sounds/shoot.wav" id="3_donny"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dk5gl"]
 radius = 666.037
@@ -28,5 +29,10 @@ position = Vector2(26, -11)
 unique_name_in_owner = true
 wait_time = 0.5
 autostart = true
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_donny")
+volume_db = -7.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

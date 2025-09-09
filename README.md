@@ -1,9 +1,11 @@
 # atlas-godot-tutorial
 
-## Info
-Tutorial:
-	- Video: https://www.youtube.com/watch?v=GwCiGixlqiU \
+## Asset Sources
+- Tutorial:
+	- Video: https://www.youtube.com/watch?v=GwCiGixlqiU
 	- Assets: https://www.gdquest.com/library/first_2d_game_godot4_vampire_survivor/#download-files
+- Sounds generated from https://sfxr.me/
+- Bubble pop sound by Universfield https://pixabay.com/sound-effects/bubble-pop-293342/
 
 ## Logs
 ### 9/3
@@ -29,3 +31,5 @@ Tutorial:
 - made gun now shoot the closest enemy
 - adjusted enemy spawning path to be outside camera
 - made enemies spawn faster as player levels up
+- added sound effects
+- 3 hours

@@ -8,13 +8,10 @@ res://pistol/gun.tscn
 res://pistol/bullet/bullet.tscn
 res://xp/xp.tscn
 res://characters/player/player.tscn
-res://pistol/gun.gd
-res://characters/charging_mob/charging_mob.gd
-res://characters/slime/slime.gd
 res://characters/charging_mob/charging_mob.tscn
-res://survivors_game.gd
+res://characters/charging_mob/charging_mob.gd
 res://README.md
+res://pistol/gun.gd
 res://characters/player/player.gd
-res://pistol/bullet/bullet.gd
-res://characters/happy_boo/happy_boo.gd
+res://survivors_game.gd
 res://characters/mob/mob.gd

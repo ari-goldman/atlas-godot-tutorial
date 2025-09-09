@@ -14,7 +14,7 @@ var times := {
 var health := 2
 var current_state := State.MOVING
 var move_speed = 300.0
-var charge_speed = 600.0
+var charge_speed = 750.0
 var stateTime := 0.0
 var charge_target: Vector2 = Vector2.INF
 const CHARGE_DISTANCE = 500.0
@@ -31,7 +31,6 @@ func _physics_process(delta):
 			velocity = direction * move_speed
 			move_and_slide()
 			
-			print(global_position.distance_to(player.global_position))
 			if global_position.distance_to(player.global_position) <= CHARGE_DISTANCE:
 				current_state = State.CHARGING
 				charge_target = Vector2.INF
@@ -77,3 +76,9 @@ func die():
 	var xp = XP_SCENE.instantiate()
 	get_parent().add_child(xp)
 	xp.global_position = global_position
+	
+	var death_sound_player = AudioStreamPlayer.new()
+	death_sound_player.stream = preload("res://sounds/bubble_pop.wav")
+	get_tree().current_scene.add_child(death_sound_player)
+	death_sound_player.play()
+	death_sound_player.finished.connect(func(): death_sound_player.queue_free())

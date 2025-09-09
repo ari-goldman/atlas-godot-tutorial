@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0qt3he0fpv3u"]
+[gd_scene load_steps=6 format=3 uid="uid://c0qt3he0fpv3u"]
 
 [ext_resource type="PackedScene" uid="uid://dhhjdcs0kqhrx" path="res://characters/player/player.tscn" id="1_3cish"]
 [ext_resource type="Script" uid="uid://cnnidspp840pg" path="res://survivors_game.gd" id="1_qqaft"]
 [ext_resource type="PackedScene" uid="uid://c827w6jputxaq" path="res://trees/pine_tree.tscn" id="2_qqaft"]
+[ext_resource type="AudioStream" uid="uid://b8fow33yhpwf7" path="res://sounds/death.wav" id="4_qqaft"]
 
 [sub_resource type="Curve2D" id="Curve2D_l26od"]
 _data = {
@@ -92,5 +93,10 @@ unique_name_in_owner = true
 position = Vector2(-86, -33)
 rotation = 0.00192493
 
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_qqaft")
+
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="level_up" from="Player" to="." method="_on_player_level_up"]

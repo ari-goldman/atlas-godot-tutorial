@@ -29,3 +29,9 @@ func die():
 	var xp = XP_SCENE.instantiate()
 	get_parent().add_child(xp)
 	xp.global_position = global_position
+	
+	var death_sound_player = AudioStreamPlayer.new()
+	death_sound_player.stream = preload("res://sounds/bubble_pop.wav")
+	get_tree().current_scene.add_child(death_sound_player)
+	death_sound_player.play()
+	death_sound_player.finished.connect(func(): death_sound_player.queue_free())

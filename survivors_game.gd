@@ -25,7 +25,8 @@ func _on_mob_spawn_timer_timeout():
 func _on_player_health_depleted():
 	%GameOver.visible = true
 	get_tree().paused = true
+	%DeathSound.play()
 
 
 func _on_player_level_up():
-	%MobSpawnTimer.wait_time *= 0.9
+	%MobSpawnTimer.wait_time *= 0.8

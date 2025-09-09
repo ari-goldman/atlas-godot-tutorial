@@ -4,7 +4,7 @@ extends CharacterBody2D
 signal health_depleted
 signal level_up
 
-var health := 100.0
+var health := 50
 
 const SPEED := 600.0
 
@@ -24,9 +24,13 @@ func _physics_process(delta):
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		%HealthBar.value = health
+		if !%HitSound.playing:
+			%HitSound.pitch_scale = lerp(0.5, 1.0, health / %HealthBar.max_value)
+			%HitSound.play()
 	
 		if health <= 0.0:
 			health_depleted.emit()
+			
 
 
 
@@ -38,4 +42,7 @@ func _on_xp_collector_xp_collected():
 		%XPBar.value -= %XPBar.max_value
 		%XPBar.max_value *= 1.2
 		%Gun.multiply_shoot_timer(0.9)
-		
+		%LevelUpSound.play()
+	else:
+		%PickupXPSound.pitch_scale = randf_range(0.95, 1.05)
+		%PickupXPSound.play()
