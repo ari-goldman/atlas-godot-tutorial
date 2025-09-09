@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://glfxaqt0l77q"]
+
+[ext_resource type="Script" uid="uid://bdeby47o34fjp" path="res://characters/charging_mob/charging_mob.gd" id="1_u6ktt"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_8su2w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nokgg"]
+radius = 42.0
+
+[node name="ChargingMob" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 4294901760
+script = ExtResource("1_u6ktt")
+
+[node name="Slime" parent="." instance=ExtResource("2_8su2w")]
+unique_name_in_owner = true
+color_modulate = Color(1, 0.52, 0.52, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21)
+shape = SubResource("CircleShape2D_nokgg")

@@ -14,6 +14,7 @@ script = ExtResource("1_nokgg")
 
 [node name="Slime" parent="." instance=ExtResource("1_dy6sc")]
 unique_name_in_owner = true
+color_modulate = Color(0.547667, 1, 0.41, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -21)

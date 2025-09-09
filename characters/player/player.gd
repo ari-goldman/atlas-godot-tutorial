@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal health_depleted
+signal level_up
 
 var health := 100.0
 
@@ -33,6 +34,7 @@ func _on_xp_collector_xp_collected():
 	%XPBar.value += 1
 	if %XPBar.value >= %XPBar.max_value:
 		## level up
+		level_up.emit()
 		%XPBar.value -= %XPBar.max_value
 		%XPBar.max_value *= 1.2
 		%Gun.multiply_shoot_timer(0.9)

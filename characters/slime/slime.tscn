@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://ogik4s70pgwl"]
 
-[ext_resource type="Texture2D" uid="uid://dvgfmy6vtvjji" path="res://characters/slime/slime_body.png" id="1_3j35h"]
 [ext_resource type="Script" uid="uid://b21quqxu4e6yk" path="res://characters/slime/slime.gd" id="1_87y5x"]
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_cq7ej"]
 [ext_resource type="Texture2D" uid="uid://c078jrp2yvc4s" path="res://characters/slime/slime_face.png" id="2_ygydt"]
+[ext_resource type="Texture2D" uid="uid://b3is6d57i3iuh" path="res://characters/slime/slime_body_gray.png" id="3_648cb"]
 [ext_resource type="Texture2D" uid="uid://btbxea1f3vwot" path="res://characters/slime/slime_body_hurt.png" id="4_0qu0c"]
 [ext_resource type="Texture2D" uid="uid://cai2ijnbypqtr" path="res://characters/slime/slime_hurt_eyes.png" id="4_hi70h"]
 
@@ -119,7 +119,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
-"values": [0.0, 1.0, 0.0]
+"values": [0.0, 1.0, Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_71vdi"]
@@ -224,7 +224,7 @@ texture = ExtResource("1_cq7ej")
 [node name="Anchor" type="Marker2D" parent="."]
 
 [node name="SlimeBody" type="Sprite2D" parent="Anchor"]
-texture = ExtResource("1_3j35h")
+texture = ExtResource("3_648cb")
 offset = Vector2(0, -36)
 
 [node name="SlimeBodyHurt" type="Sprite2D" parent="Anchor/SlimeBody"]

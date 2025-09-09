@@ -23,3 +23,9 @@ Tutorial:
 	- player levels up at certain XP values
 	- player shoots faster on level
 - 3 hours (I lost a lot of work the the git gods)
+
+### 9/9
+- added charging enemy
+- made gun now shoot the closest enemy
+- adjusted enemy spawning path to be outside camera
+- made enemies spawn faster as player levels up
