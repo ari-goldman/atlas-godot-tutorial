@@ -1,7 +1,9 @@
 # atlas-godot-tutorial
 
+### Play the game at [atlas-godot-tutorial.ari-goldman.xyz](https://atlas-godot-tutorial.ari-goldman.xyz/)
+
 ## Info
-- Total time: ~8 hours
+- Total time: ~9 hours
 - Features added:
 	- XP system
 	- charging enemy variant
@@ -39,4 +41,5 @@
 - adjusted enemy spawning path to be outside camera
 - made enemies spawn faster as player levels up
 - added sound effects
-- 3 hours
+- add github workflow to push to github pages
+- 4 hours
