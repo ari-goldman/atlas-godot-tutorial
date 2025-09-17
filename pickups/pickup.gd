@@ -1,11 +1,22 @@
-class_name xp_object
+class_name Pickup
 extends Area2D
+
+enum PickupTypes {
+	NONE,
+	XP,
+	AMMO,
+	MOVE_SPEED_AUGMENT,
+	FIRE_RATE_AUGMENT
+}
 
 var tied_node: Node2D = null
 var velocity: Vector2 = Vector2.ZERO
+@export var pickup_type = PickupTypes.NONE
+
 const ACCELERATION = 1200.0
 const MAX_VELOCITY = 1000.0
 const TURN_SPEED := 26.0
+
 
 func tie_to_node(_tied_node: Node2D):
 	tied_node = _tied_node

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://gnvfvvfoet6r"]
+
+[ext_resource type="PackedScene" uid="uid://bm4e4r4yyvw0w" path="res://pickups/pickup.tscn" id="1_tcvo8"]
+[ext_resource type="Texture2D" uid="uid://bpebr707glcwc" path="res://pickups/augments/fire_rate/fire_rate.png" id="2_u2vet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vh57q"]
+radius = 32.0156
+
+[node name="FireRateAugment" instance=ExtResource("1_tcvo8")]
+pickup_type = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_vh57q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_u2vet")
