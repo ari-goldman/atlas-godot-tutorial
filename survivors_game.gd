@@ -36,11 +36,11 @@ func _on_player_health_depleted():
 	%GameOver.visible = true
 	%SurvivedText.text = %SurvivedText.text % %Timer.seconds
 	get_tree().paused = true
-	%DeathSound.play()
+	AudioManager.play_sound(AudioManager.Sounds.PLAYER_DEATH)
 
 
 func _on_player_level_up():
-	var border_expanion := Vector2(25, 25)
+	var border_expanion := Vector2(50, 50)
 	%AmmoSpawnTimer.wait_time = max(%AmmoSpawnTimer.wait_time - 0.2, 0.1)
 	%Border.expand_border(border_expanion, 3)
 	%Camera.limit_left -= border_expanion.x / 2.0

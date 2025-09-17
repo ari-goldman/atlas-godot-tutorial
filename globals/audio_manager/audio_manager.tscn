@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://cplduw5f5kk8k"]
+
+[ext_resource type="Script" uid="uid://bpyklowrsffal" path="res://globals/audio_manager/audio_manager.gd" id="1_qw3el"]
+[ext_resource type="AudioStream" uid="uid://bxqwybm5k4mb1" path="res://sounds/pickup_xp.wav" id="2_hthfx"]
+[ext_resource type="AudioStream" uid="uid://b8fow33yhpwf7" path="res://sounds/death.wav" id="2_qm7t7"]
+[ext_resource type="AudioStream" uid="uid://06kval2bn8wo" path="res://sounds/equip-sound.wav" id="3_i5rk7"]
+[ext_resource type="AudioStream" uid="uid://bytbix0jqv17i" path="res://sounds/bubble_pop.wav" id="3_qm7t7"]
+[ext_resource type="AudioStream" uid="uid://ccusay3onuuq2" path="res://sounds/hit.wav" id="5_qu4yp"]
+[ext_resource type="AudioStream" uid="uid://wdaioansmqe5" path="res://sounds/level_up.wav" id="6_2a5cl"]
+[ext_resource type="AudioStream" uid="uid://tqeru80j051o" path="res://sounds/shoot.wav" id="8_uf7k3"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_qw3el")
+
+[node name="Pickups" type="Node" parent="."]
+
+[node name="XP" type="AudioStreamPlayer" parent="Pickups"]
+stream = ExtResource("2_hthfx")
+
+[node name="Ammo" type="AudioStreamPlayer" parent="Pickups"]
+stream = ExtResource("3_i5rk7")
+
+[node name="Player" type="Node" parent="."]
+
+[node name="Death" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("2_qm7t7")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("5_qu4yp")
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("6_2a5cl")
+
+[node name="Mob" type="Node" parent="."]
+
+[node name="Death" type="AudioStreamPlayer" parent="Mob"]
+stream = ExtResource("3_qm7t7")
+
+[node name="Weapon" type="Node" parent="."]
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="Weapon"]
+stream = ExtResource("8_uf7k3")
+volume_db = -7.5

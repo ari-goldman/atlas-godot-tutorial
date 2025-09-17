@@ -31,9 +31,9 @@ func _physics_process(delta):
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		%HealthBar.value = health
-		if !%HitSound.playing:
-			%HitSound.pitch_scale = lerp(0.5, 1.0, health / %HealthBar.max_value)
-			%HitSound.play()
+		
+		AudioManager.play_sound(AudioManager.Sounds.PLAYER_HURT, lerp(0.5, 1.0, health / %HealthBar.max_value))
+		
 	
 		if health <= 0.0:
 			health_depleted.emit()
@@ -53,12 +53,11 @@ func _on_xp_collector_xp_collected():
 		%XPBar.value -= %XPBar.max_value
 		%XPBar.max_value *= 1.2
 		%Gun.multiply_shoot_timer(0.9)
-		%LevelUpSound.play()
+		AudioManager.play_sound(AudioManager.Sounds.PLAYER_LEVEL_UP)
 		
-		GlobalStats.augment_drop_chances = min(GlobalStats.augment_drop_chance + 0.1, 0.8)
+		GlobalStats.augment_drop_chance = min(GlobalStats.augment_drop_chance + 0.1, 0.8)
 	else:
-		%PickupXPSound.pitch_scale = randf_range(0.95, 1.05)
-		%PickupXPSound.play()
+		AudioManager.play_sound(AudioManager.Sounds.PICKUP_XP, 1.0, 0.05)
 
 
 func _on_gun_ammo_changed(_ammo):
@@ -67,8 +66,7 @@ func _on_gun_ammo_changed(_ammo):
 
 func _on_pickup_collector_ammo_collected():
 	%Gun	.fill_ammo()
-	%PickupAmmoSound.pitch_scale = randf_range(0.95, 1.05)
-	%PickupAmmoSound.play()
+	AudioManager.play_sound(AudioManager.Sounds.PICKUP_AMMO, 1.0, 0.05)
 
 func multiply_fire_rate(mult: float):
 	%Gun.fire_rate /= mult

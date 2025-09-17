@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0qt3he0fpv3u"]
+[gd_scene load_steps=15 format=3 uid="uid://c0qt3he0fpv3u"]
 
 [ext_resource type="PackedScene" uid="uid://dhhjdcs0kqhrx" path="res://characters/player/player.tscn" id="1_3cish"]
 [ext_resource type="Script" uid="uid://cnnidspp840pg" path="res://survivors_game.gd" id="1_qqaft"]
 [ext_resource type="PackedScene" uid="uid://bbwov7a2wjrxn" path="res://main/border.tscn" id="2_7jj1j"]
 [ext_resource type="FontFile" uid="uid://d3m6phwjbephh" path="res://fonts/Louis George Cafe Bold.ttf" id="3_mx11s"]
 [ext_resource type="FontFile" uid="uid://bvitfb3nuemn5" path="res://fonts/Louis George Cafe.ttf" id="4_edxvn"]
-[ext_resource type="AudioStream" uid="uid://b8fow33yhpwf7" path="res://sounds/death.wav" id="4_qqaft"]
 [ext_resource type="FontFile" uid="uid://vlymi52pe1rp" path="res://fonts/Louis George Cafe Italic.ttf" id="5_getvi"]
 [ext_resource type="Script" uid="uid://ligun6wbua8t" path="res://game_timer.gd" id="6_3uxnc"]
 [ext_resource type="PackedScene" uid="uid://dbuwlkbx4bbbo" path="res://ui/ui.tscn" id="8_3uxnc"]
@@ -152,10 +151,6 @@ theme_override_font_sizes/font_size = 50
 text = "but you survived %d seconds"
 horizontal_alignment = 1
 
-[node name="Trees" type="Node2D" parent="."]
-y_sort_enabled = true
-position = Vector2(1570, 433)
-
 [node name="MobSpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 1.5
@@ -186,10 +181,6 @@ limit_right = 1920
 limit_bottom = 1080
 limit_smoothed = true
 position_smoothing_enabled = true
-
-[node name="DeathSound" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("4_qqaft")
 
 [node name="WorldBorder" type="Node2D" parent="."]
 

@@ -1,14 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dhhjdcs0kqhrx"]
+[gd_scene load_steps=13 format=3 uid="uid://dhhjdcs0kqhrx"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b8l34sppidgnx" path="res://characters/player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://bedfuu4x0xntb" path="res://pistol/gun.tscn" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://bn7s3xhbwa4hc" path="res://pickups/pickup_collector.gd" id="4_5dc8e"]
 [ext_resource type="FontFile" uid="uid://bvitfb3nuemn5" path="res://fonts/Louis George Cafe.ttf" id="4_idpv6"]
-[ext_resource type="AudioStream" uid="uid://ccusay3onuuq2" path="res://sounds/hit.wav" id="5_ixbpm"]
-[ext_resource type="AudioStream" uid="uid://wdaioansmqe5" path="res://sounds/level_up.wav" id="6_c6leb"]
-[ext_resource type="AudioStream" uid="uid://bxqwybm5k4mb1" path="res://sounds/pickup_xp.wav" id="7_dirf7"]
-[ext_resource type="AudioStream" uid="uid://06kval2bn8wo" path="res://sounds/equip-sound.wav" id="9_rpf03"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 31.0
@@ -120,24 +116,6 @@ collision_mask = 256
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupCollector/CollectionArea"]
 shape = SubResource("CircleShape2D_c6leb")
 debug_color = Color(0.0953786, 0.648504, 1.15514e-06, 0.42)
-
-[node name="Node" type="Node" parent="."]
-
-[node name="HitSound" type="AudioStreamPlayer" parent="Node"]
-unique_name_in_owner = true
-stream = ExtResource("5_ixbpm")
-
-[node name="LevelUpSound" type="AudioStreamPlayer" parent="Node"]
-unique_name_in_owner = true
-stream = ExtResource("6_c6leb")
-
-[node name="PickupXPSound" type="AudioStreamPlayer" parent="Node"]
-unique_name_in_owner = true
-stream = ExtResource("7_dirf7")
-
-[node name="PickupAmmoSound" type="AudioStreamPlayer" parent="Node"]
-unique_name_in_owner = true
-stream = ExtResource("9_rpf03")
 
 [node name="Augments" type="Node" parent="."]
 unique_name_in_owner = true

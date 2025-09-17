@@ -78,8 +78,4 @@ func die():
 		get_parent().add_child(xp)
 		xp.global_position = global_position + 20.0 * Vector2(randf(), randf())
 	
-	var death_sound_player = AudioStreamPlayer.new()
-	death_sound_player.stream = preload("res://sounds/bubble_pop.wav")
-	get_tree().current_scene.add_child(death_sound_player)
-	death_sound_player.play()
-	death_sound_player.finished.connect(func(): death_sound_player.queue_free())
+	AudioManager.play_sound(AudioManager.Sounds.MOB_DEATH)

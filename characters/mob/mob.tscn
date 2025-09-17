@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcg2yxwctbkmn"]
+[gd_scene load_steps=4 format=3 uid="uid://dcg2yxwctbkmn"]
 
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="1_dy6sc"]
 [ext_resource type="Script" uid="uid://cnthvk370cxc4" path="res://characters/mob/mob.gd" id="1_nokgg"]
-[ext_resource type="AudioStream" uid="uid://bytbix0jqv17i" path="res://sounds/bubble_pop.wav" id="3_w34ve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nokgg"]
 radius = 42.0
@@ -22,7 +21,3 @@ color_modulate = Color(0.547667, 1, 0.41, 1)
 unique_name_in_owner = true
 position = Vector2(0, -21)
 shape = SubResource("CircleShape2D_nokgg")
-
-[node name="DeathSound" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("3_w34ve")

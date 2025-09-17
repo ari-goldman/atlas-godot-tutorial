@@ -84,3 +84,12 @@
 	- can either increase player speed or fire rate
 - 11 hours
 </details>
+
+<details open>
+<summary>Week 3</summary>
+
+### 9/17
+- implemented audio manager
+- 1 hour
+
+</details>
