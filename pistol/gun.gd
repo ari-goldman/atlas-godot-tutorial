@@ -1,6 +1,22 @@
 class_name Gun
 extends Area2D
 
+signal ammo_changed(_ammo: int)
+
+var fire_rate: float:
+	set(value):
+		fire_rate = value
+		%Timer.wait_time = fire_rate
+
+var ammo: int = 8:
+	set(value):
+		ammo = value
+		ammo_changed.emit(ammo)
+var max_ammo: int = 8
+
+func _ready():
+	ammo_changed.emit(ammo)
+	fire_rate = %Timer.wait_time
 
 func _physics_process(delta):
 	var closest_enemy = get_closest_in_range_body()
@@ -8,6 +24,9 @@ func _physics_process(delta):
 		look_at(closest_enemy.global_position)
 
 func shoot():
+	assert(ammo > 0)
+	ammo -= 1
+	
 	const BULLET = preload("res://pistol/bullet/bullet.tscn")
 	var new_bullet: Bullet = BULLET.instantiate()
 	new_bullet.global_position = %"Shooting Point".global_position
@@ -27,10 +46,13 @@ func get_closest_in_range_body() -> Node2D:
 			closest_enemy = enemy
 			closest_distance = enemy_distance
 	return closest_enemy
+
+func fill_ammo():
+	ammo = max_ammo
 	
 	
 func _on_timer_timeout():
-	if !get_overlapping_bodies().is_empty():
+	if ammo > 0 and !get_overlapping_bodies().is_empty():
 		shoot()
 
 func multiply_shoot_timer(mult: float):

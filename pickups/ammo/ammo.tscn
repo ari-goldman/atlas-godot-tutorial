@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5gn2xdo5qiw1"]
+
+[ext_resource type="PackedScene" uid="uid://bm4e4r4yyvw0w" path="res://pickups/pickup.tscn" id="1_qwlfo"]
+[ext_resource type="Texture2D" uid="uid://tu1eqm6244ab" path="res://pickups/ammo/ammo.png" id="2_esy8d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esy8d"]
+radius = 42.0119
+
+[node name="Ammo" instance=ExtResource("1_qwlfo")]
+pickup_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_esy8d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(2.3125, 2.3125)
+texture = ExtResource("2_esy8d")

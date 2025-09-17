@@ -3,22 +3,20 @@
 ### Play the game at [atlas-godot-tutorial.ari-goldman.xyz](https://atlas-godot-tutorial.ari-goldman.xyz/)
 
 ## Info
-- Total time: ~9 hours
-- Features added:
-	- XP and leveling system
-		- all enemies drop XP
-  		- when close enough, the XP will magnetize to the player
-    	- when picked up, the XP will slowly fill the blue bar above the player
-     	- when the bar is full, the player levels up and their rate of fire increases, but so does the enemies' spawn rate
-	- charging enemy variant
- 		- walks towards the player until it's close enough, when it charges the player
-   		- the player can dodge out of the way by moving to either side of it's charge
-    	- after charging, goes on a brief cooldown until it can move again
-     	- implemented using a state machine (which I've never done until now)
-	- sound effects
-		- effects on shoot, XP pickup, slime death, player damage, and player death
- 	- GitHub action for web deployment
-  		- see link at the top!
+- Soft gates
+	- leveling: enemy spawn rate is no longer tied to enemy player level, so now the player level will only make their time easier, it is not required to progress the game 
+	- augments: player can pickup augments dropped that increase their movement speed and fire rate for limited times
+- Hard gate: time
+	- augments unlock after 20 seconds
+	- charging enemies now spawn at 40 seconds in
+	- enemy difficulty is tied to time
+- Faucets and Sinks:
+	- Ammo: the player now spens ammo when they shoot (sink), and they must pickup more around the map (faucet)
+	- Physical space: the player now gains more play area as they level up (faucet), but they lose it all when dying (sink?)
+	
+- Total time:
+	- Week 2: ~9 hours
+	- Week 3: ~13 hours
 
 ## Asset Sources
 - Tutorial:
@@ -26,8 +24,13 @@
 	- Assets: https://www.gdquest.com/library/first_2d_game_godot4_vampire_survivor/#download-files
 - Sounds generated from https://sfxr.me/
 - Bubble pop sound by Universfield https://pixabay.com/sound-effects/bubble-pop-293342/
+- Louis George Café font by Chen Yining https://www.dafont.com/louis-george-cafe.font?text=01234%3A5678
+- Equip Sound by Homemade_SFX https://pixabay.com/sound-effects/equip-sound-272428/
 
 ## Logs
+
+<details>
+<summary>Week 2</summary>
 ### 9/3
 - initialized repository with project files
 - started tutorial
@@ -54,3 +57,30 @@
 - added sound effects
 - add github workflow to push to github pages
 - 4 hours
+</details>
+
+<details open>
+<summary>Week 3</summary>
+
+### 9/15
+- added background timer
+- created border tool script
+- 2 hours (had a lot of trouble with border script)
+
+### 9/16
+- made border expand on level
+- fixed errors in border tool script
+- added ammo meter
+- made generic pickup object, now encompassing the XP pickup
+- added ammo pickup
+	- spawn rate increases with player level
+	- has a pickup sound effect
+- added text to player displaying current level
+- tweaked difficulty curve, mob spawn rate is now depedent on time
+	- timer flashes red when spawn rate increases
+- death screen now displays time survived
+- added augment system
+	- augments drop from green slimes
+	- can either increase player speed or fire rate
+- 11 hours
+</details>

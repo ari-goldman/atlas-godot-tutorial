@@ -79,6 +79,10 @@ run/main_scene="uid://c0qt3he0fpv3u"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalStats="*res://globals/global_stats.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -96,6 +100,7 @@ enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://fonts/": "red",
 "res://sounds/": "teal"
 }
 
@@ -129,9 +134,14 @@ shoot={
 
 [layer_names]
 
+2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemies"
 3d_physics/layer_2="player"
+2d_physics/layer_3="Static Objects"
+2d_physics/layer_4="Border Objects"
+2d_physics/layer_9="Pickups"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbwov7a2wjrxn"]
+
+[ext_resource type="Script" uid="uid://da2xh5egs3aen" path="res://main/border.gd" id="1_3ywit"]
+[ext_resource type="PackedScene" uid="uid://c827w6jputxaq" path="res://trees/pine_tree.tscn" id="2_2q535"]
+
+[sub_resource type="Curve2D" id="Curve2D_3ywit"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1080, 0, 0, 0, 0, 1920, 1080, 0, 0, 0, 0, 1920, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Border" type="Path2D"]
+curve = SubResource("Curve2D_3ywit")
+script = ExtResource("1_3ywit")
+border_object = ExtResource("2_2q535")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+unique_name_in_owner = true
+rotation = 1.5708
+
+[node name="Objects" type="Node2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true

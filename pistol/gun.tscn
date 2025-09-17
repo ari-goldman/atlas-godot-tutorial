@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://tqeru80j051o" path="res://sounds/shoot.wav" id="3_donny"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dk5gl"]
-radius = 666.037
+radius = 528.001
 
 [node name="Gun" type="Area2D"]
 collision_layer = 0

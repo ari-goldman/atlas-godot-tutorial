@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ejmejnuvxano"]
+
+[ext_resource type="PackedScene" uid="uid://bm4e4r4yyvw0w" path="res://pickups/pickup.tscn" id="1_vb2tp"]
+[ext_resource type="Texture2D" uid="uid://c87prxl1b6ghi" path="res://pickups/xp/xp.png" id="2_kkxxd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_55hsx"]
+radius = 27.0
+
+[node name="XP" instance=ExtResource("1_vb2tp")]
+pickup_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_55hsx")
+
+[node name="Xp" type="Sprite2D" parent="." index="1"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_kkxxd")

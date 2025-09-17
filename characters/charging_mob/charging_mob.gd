@@ -72,10 +72,11 @@ func die():
 	get_parent().add_child(smoke)
 	smoke.global_position = global_position
 	
-	const XP_SCENE = preload("res://xp/xp.tscn")
-	var xp = XP_SCENE.instantiate()
-	get_parent().add_child(xp)
-	xp.global_position = global_position
+	const XP_SCENE = preload("res://pickups/xp/xp.tscn")
+	for i in range(2):
+		var xp = XP_SCENE.instantiate()
+		get_parent().add_child(xp)
+		xp.global_position = global_position + 20.0 * Vector2(randf(), randf())
 	
 	var death_sound_player = AudioStreamPlayer.new()
 	death_sound_player.stream = preload("res://sounds/bubble_pop.wav")

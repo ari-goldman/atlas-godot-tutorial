@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhhjdcs0kqhrx"]
+[gd_scene load_steps=17 format=3 uid="uid://dhhjdcs0kqhrx"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b8l34sppidgnx" path="res://characters/player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://bedfuu4x0xntb" path="res://pistol/gun.tscn" id="3_i3pqv"]
-[ext_resource type="Script" uid="uid://bn7s3xhbwa4hc" path="res://xp/xp_collector.gd" id="4_5dc8e"]
+[ext_resource type="Script" uid="uid://bn7s3xhbwa4hc" path="res://pickups/pickup_collector.gd" id="4_5dc8e"]
+[ext_resource type="FontFile" uid="uid://bvitfb3nuemn5" path="res://fonts/Louis George Cafe.ttf" id="4_idpv6"]
 [ext_resource type="AudioStream" uid="uid://ccusay3onuuq2" path="res://sounds/hit.wav" id="5_ixbpm"]
 [ext_resource type="AudioStream" uid="uid://wdaioansmqe5" path="res://sounds/level_up.wav" id="6_c6leb"]
 [ext_resource type="AudioStream" uid="uid://bxqwybm5k4mb1" path="res://sounds/pickup_xp.wav" id="7_dirf7"]
+[ext_resource type="AudioStream" uid="uid://06kval2bn8wo" path="res://sounds/equip-sound.wav" id="9_rpf03"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 31.0
@@ -35,6 +37,7 @@ radius = 239.002
 radius = 21.0238
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 14
 platform_floor_layers = 4294901760
 script = ExtResource("1_onrkg")
 
@@ -45,6 +48,7 @@ unique_name_in_owner = true
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 
 [node name="Gun" parent="." instance=ExtResource("3_i3pqv")]
 unique_name_in_owner = true
@@ -70,6 +74,22 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5dc8e")
 max_value = 5.0
 show_percentage = false
 
+[node name="LevelLabel" type="Label" parent="XPBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -2.549
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 45.823
+theme_override_colors/font_color = Color(0.0742, 0.34768, 0.53, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.462745)
+theme_override_fonts/font = ExtResource("4_idpv6")
+theme_override_font_sizes/font_size = 20
+text = "LEVEL 0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -89.0
@@ -82,22 +102,22 @@ max_value = 50.0
 value = 50.0
 show_percentage = false
 
-[node name="XPCollector" type="Node2D" parent="."]
+[node name="PickupCollector" type="Node2D" parent="."]
 script = ExtResource("4_5dc8e")
 
-[node name="MagnetArea" type="Area2D" parent="XPCollector"]
+[node name="MagnetArea" type="Area2D" parent="PickupCollector"]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="XPCollector/MagnetArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupCollector/MagnetArea"]
 shape = SubResource("CircleShape2D_ixbpm")
 debug_color = Color(0.293953, 0.618477, 0.339365, 0.42)
 
-[node name="CollectionArea" type="Area2D" parent="XPCollector"]
+[node name="CollectionArea" type="Area2D" parent="PickupCollector"]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="XPCollector/CollectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupCollector/CollectionArea"]
 shape = SubResource("CircleShape2D_c6leb")
 debug_color = Color(0.0953786, 0.648504, 1.15514e-06, 0.42)
 
@@ -115,6 +135,17 @@ stream = ExtResource("6_c6leb")
 unique_name_in_owner = true
 stream = ExtResource("7_dirf7")
 
-[connection signal="xp_collected" from="XPCollector" to="." method="_on_xp_collector_xp_collected"]
-[connection signal="area_entered" from="XPCollector/MagnetArea" to="XPCollector" method="_on_magnet_area_area_entered"]
-[connection signal="area_entered" from="XPCollector/CollectionArea" to="XPCollector" method="_on_collection_area_area_entered"]
+[node name="PickupAmmoSound" type="AudioStreamPlayer" parent="Node"]
+unique_name_in_owner = true
+stream = ExtResource("9_rpf03")
+
+[node name="Augments" type="Node" parent="."]
+unique_name_in_owner = true
+
+[connection signal="ammo_changed" from="Gun" to="." method="_on_gun_ammo_changed"]
+[connection signal="ammo_collected" from="PickupCollector" to="." method="_on_pickup_collector_ammo_collected"]
+[connection signal="fire_rate_augment_collected" from="PickupCollector" to="." method="_on_pickup_collector_fire_rate_augment_collected"]
+[connection signal="move_speed_augment_collected" from="PickupCollector" to="." method="_on_pickup_collector_move_speed_augment_collected"]
+[connection signal="xp_collected" from="PickupCollector" to="." method="_on_xp_collector_xp_collected"]
+[connection signal="area_entered" from="PickupCollector/MagnetArea" to="PickupCollector" method="_on_magnet_area_area_entered"]
+[connection signal="area_entered" from="PickupCollector/CollectionArea" to="PickupCollector" method="_on_collection_area_area_entered"]
