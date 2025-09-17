@@ -54,6 +54,8 @@ func _on_xp_collector_xp_collected():
 		%XPBar.max_value *= 1.2
 		%Gun.multiply_shoot_timer(0.9)
 		%LevelUpSound.play()
+		
+		GlobalStats.augment_drop_chances = min(GlobalStats.augment_drop_chance + 0.1, 0.8)
 	else:
 		%PickupXPSound.pitch_scale = randf_range(0.95, 1.05)
 		%PickupXPSound.play()
