@@ -40,13 +40,28 @@ func _on_player_health_depleted():
 
 
 func _on_player_level_up():
-	var border_expanion := Vector2(50, 50)
+	var border_expanion: Vector2 = GlobalStats.border_expansion_size
 	%AmmoSpawnTimer.wait_time = max(%AmmoSpawnTimer.wait_time - 0.2, 0.1)
-	%Border.expand_border(border_expanion, 3)
-	%Camera.limit_left -= border_expanion.x / 2.0
-	%Camera.limit_right += border_expanion.x / 2.0
-	%Camera.limit_top -= border_expanion.y / 2.0
-	%Camera.limit_bottom += border_expanion.y / 2.0
+	
+	
+	var expansion_time: float = 0.2
+	var tween: Tween = get_tree().create_tween()
+	var camera: Camera2D = %Camera
+	
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(camera, "limit_left", camera.limit_left - border_expanion.x / 2.0, expansion_time)
+	tween.tween_property(camera, "limit_right", camera.limit_right + border_expanion.x / 2.0, expansion_time)
+	tween.tween_property(camera, "limit_top", camera.limit_top - border_expanion.y / 2.0, expansion_time)
+	tween.tween_property(camera, "limit_bottom", camera.limit_bottom + border_expanion.y / 2.0, expansion_time)
+	tween.set_parallel(false)
+	
+	%Border.expand_border(border_expanion, 5, tween, expansion_time)
+	#%Camera.limit_left -= border_expanion.x / 2.0
+	#%Camera.limit_right += border_expanion.x / 2.0
+	#%Camera.limit_top -= border_expanion.y / 2.0
+	#%Camera.limit_bottom += border_expanion.y / 2.0
 
 
 func _on_timer_update(_seconds):

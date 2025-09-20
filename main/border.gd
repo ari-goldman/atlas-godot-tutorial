@@ -8,29 +8,40 @@ extends Path2D
 		if Engine.is_editor_hint():
 			call_deferred("_set_border_points")
 			call_deferred("_create_elements")
+		else:
+			call_deferred("_set_border_points")
+			call_deferred("_create_elements")
 
 @export var border_object: PackedScene: # better have a Node2D base node...
 	set(value):
 		border_object = value
 		if border_object and Engine.is_editor_hint():
-				call_deferred("_create_elements")
+			call_deferred("_create_elements")
+		else:
+			_create_elements()
 @export var border_elements: int = 10:
 	set(value):
 		border_elements = value
 		if border_object and Engine.is_editor_hint():
 			call_deferred("_create_elements")
+		else:
+			_create_elements()
 
 @export_range(0.0, 50.0) var jitter: float = 0.0:
 	set(value):
 		jitter = value
 		if border_object and Engine.is_editor_hint():
 			call_deferred("_create_elements")
+		else:
+			_create_elements()
 
 @export var random_seed: String = "seed":
 	set(value):
 		random_seed = value
 		if border_object and Engine.is_editor_hint():
 			call_deferred("_create_elements")
+		else:
+			_create_elements()
 
 func _ready():
 	if border_object:
@@ -77,13 +88,15 @@ func _set_border_points():
 	curve.add_point(Vector2(x, 0))
 	curve.add_point(Vector2(0, 0))
 
-func expand_border(added_size: Vector2, add_objects: int = 1):
-	position -= added_size / 4.0
-	border_size += added_size
-	border_elements += 1
-	curve = null
-	call_deferred("_create_elements")
-	
-#func _unhandled_input(event):
-	#if event.is_action_pressed("ui_accept"):
-		#expand_border(Vector2(100, 100))
+func expand_border(added_size: Vector2, add_objects: int = 1, tween: Tween = null, tween_time: float = 0.0):
+	var final_position: Vector2 = global_position - added_size / 4.0
+	var final_size: Vector2 = border_size + added_size
+	border_elements += add_objects
+	if is_instance_valid(tween) and tween.is_valid(): 
+		tween.set_parallel(true)
+		tween.tween_property(self, "global_position", final_position, tween_time)
+		tween.tween_property(self, "border_size", final_size, tween_time)
+		tween.set_parallel(false)
+	else:
+		global_position = final_position
+		border_size = final_size

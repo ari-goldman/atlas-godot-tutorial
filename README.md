@@ -86,10 +86,14 @@
 </details>
 
 <details open>
-<summary>Week 3</summary>
+<summary>Week 4</summary>
 
 ### 9/17
-- implemented audio manager
+- implemented (basic) audio manager
 - 1 hour
+
+### 9/19
+- made border expand with tween
+- 2 hours
 
 </details>
