@@ -44,7 +44,7 @@ func _on_player_level_up():
 	%AmmoSpawnTimer.wait_time = max(%AmmoSpawnTimer.wait_time - 0.2, 0.1)
 	
 	
-	var expansion_time: float = 0.2
+	var expansion_time: float = GlobalStats.border_expansion_time
 	var tween: Tween = get_tree().create_tween()
 	var camera: Camera2D = %Camera
 	
@@ -57,6 +57,7 @@ func _on_player_level_up():
 	tween.tween_property(camera, "limit_bottom", camera.limit_bottom + border_expanion.y / 2.0, expansion_time)
 	tween.set_parallel(false)
 	
+	%SpawnPath.scale = (border_expanion + %Border.border_size) / %Border.base_border_size
 	%Border.expand_border(border_expanion, 5, tween, expansion_time)
 	#%Camera.limit_left -= border_expanion.x / 2.0
 	#%Camera.limit_right += border_expanion.x / 2.0

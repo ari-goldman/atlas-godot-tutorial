@@ -26,6 +26,7 @@
 - Bubble pop sound by Universfield https://pixabay.com/sound-effects/bubble-pop-293342/
 - Louis George Café font by Chen Yining https://www.dafont.com/louis-george-cafe.font?text=01234%3A5678
 - Equip Sound by Homemade_SFX https://pixabay.com/sound-effects/equip-sound-272428/
+- Actionlines Comic Anime Shader by EriNixie https://godotshaders.com/shader/actionlines-comic-anime/
 
 ## Logs
 
@@ -95,5 +96,9 @@
 ### 9/19
 - made border expand with tween
 - 2 hours
+
+### 9/22
+- added action lines that change based on player augments
+- 1.5 hours
 
 </details>

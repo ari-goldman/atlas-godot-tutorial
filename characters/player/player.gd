@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal health_depleted
 signal level_up
+signal augments_changed(number_speed: int, number_fire_rate)
+
 
 signal gun_ammo_changed(_ammo: int)
 
@@ -37,6 +39,7 @@ func _physics_process(delta):
 	
 		if health <= 0.0:
 			health_depleted.emit()
+			_clear_augments()
 			
 
 
@@ -74,15 +77,35 @@ func multiply_fire_rate(mult: float):
 func multiply_move_speed(mult: float):
 	speed *= mult
 
-
-func _on_pickup_collector_fire_rate_augment_collected():
-	var augment := FireRateAugment.new(GlobalStats.fire_rate_augment_mult, GlobalStats.augment_lifetime)
+func _setup_augment(augment: Augment):
 	%Augments.add_child(augment)
 	augment.apply(self)
-	pass
+	_update_augment_count()
+	augment.connect("done", _update_augment_count)
+	
+func _on_pickup_collector_fire_rate_augment_collected():
+	var augment := FireRateAugment.new(GlobalStats.fire_rate_augment_mult, GlobalStats.augment_lifetime)
+	_setup_augment(augment)
 
 
 func _on_pickup_collector_move_speed_augment_collected():
 	var augment := MoveSpeedAugment.new(GlobalStats.move_speed_augment_mult, GlobalStats.augment_lifetime)
-	%Augments.add_child(augment)
-	augment.apply(self)
+	_setup_augment(augment)
+
+func _clear_augments():
+	for child: Augment in %Augments.get_children():
+		child.unapply()
+		child.queue_free()
+	_update_augment_count()
+
+func _update_augment_count():
+	var speed_augments: int = 0
+	var fire_rate_augments: int = 0
+	
+	for child in %Augments.get_children():
+		if child is MoveSpeedAugment:
+			speed_augments += 1
+		if child is FireRateAugment:
+			fire_rate_augments += 1
+	
+	augments_changed.emit(speed_augments, fire_rate_augments)

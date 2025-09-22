@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0qt3he0fpv3u"]
+[gd_scene load_steps=17 format=3 uid="uid://c0qt3he0fpv3u"]
 
 [ext_resource type="PackedScene" uid="uid://dhhjdcs0kqhrx" path="res://characters/player/player.tscn" id="1_3cish"]
 [ext_resource type="Script" uid="uid://cnnidspp840pg" path="res://survivors_game.gd" id="1_qqaft"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://ligun6wbua8t" path="res://game_timer.gd" id="6_3uxnc"]
 [ext_resource type="PackedScene" uid="uid://dbuwlkbx4bbbo" path="res://ui/ui.tscn" id="8_3uxnc"]
 [ext_resource type="Texture2D" uid="uid://c44qht6gre3kn" path="res://ui/bullet.png" id="9_3uxnc"]
+[ext_resource type="PackedScene" uid="uid://gnvfvvfoet6r" path="res://pickups/augments/fire_rate/fire_rate_augment_pickup.tscn" id="10_l3cnu"]
+[ext_resource type="PackedScene" uid="uid://c4h4ou4ar7v77" path="res://pickups/augments/move_speed/move_speed_augment_pickup.tscn" id="11_ejye1"]
 
 [sub_resource type="Curve2D" id="Curve2D_7jj1j"]
 _data = {
@@ -18,7 +20,7 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_l26od"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 85.0403, 39.6639, 0, 0, 0, 0, 1839.51, 38.045, 0, 0, 0, 0, 1835.39, 1112.21, 0, 0, 0, 0, 80.0865, 1113.83, 0, 0, 0, 0, 85.0403, 38.045)
+"points": PackedVector2Array(0, 0, 0, 0, -1040, -620, 0, 0, 0, 0, 1040, -620, 0, 0, 0, 0, 1040, 620, 0, 0, 0, 0, -1040, 620, 0, 0, 0, 0, -1040, -620)
 }
 point_count = 5
 
@@ -159,14 +161,13 @@ autostart = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MobSpawnTimer"]
 
 [node name="SpawnPath" type="Path2D" parent="."]
-position = Vector2(-192, -147)
-scale = Vector2(1.21119, 1.23538)
+unique_name_in_owner = true
+position = Vector2(960, 540)
 curve = SubResource("Curve2D_l26od")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath"]
 unique_name_in_owner = true
-position = Vector2(85.0403, 39.6639)
-rotation = -0.000922729
+position = Vector2(-1040, -620)
 
 [node name="Player" parent="." instance=ExtResource("1_3cish")]
 unique_name_in_owner = true
@@ -174,7 +175,7 @@ position = Vector2(966, 544)
 
 [node name="Camera" type="Camera2D" parent="Player"]
 unique_name_in_owner = true
-position = Vector2(-6, -4)
+position = Vector2(0, -4)
 limit_left = 0
 limit_top = 0
 limit_right = 1920
@@ -184,8 +185,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="WorldBorder" type="Node2D" parent="."]
 
 [node name="BackgroundTimer" type="CenterContainer" parent="."]
 offset_right = 1920.0
@@ -223,7 +222,20 @@ unique_name_in_owner = true
 wait_time = 3.0
 autostart = true
 
+[node name="FireRateAugment" parent="." instance=ExtResource("10_l3cnu")]
+position = Vector2(88, 991)
+
+[node name="FireRateAugment2" parent="." instance=ExtResource("10_l3cnu")]
+position = Vector2(81, 831)
+
+[node name="MoveSpeedAugment" parent="." instance=ExtResource("11_ejye1")]
+position = Vector2(1789, 77)
+
+[node name="MoveSpeedAugment2" parent="." instance=ExtResource("11_ejye1")]
+position = Vector2(1789, 221)
+
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
+[connection signal="augments_changed" from="Player" to="UI" method="_on_player_augments_changed"]
 [connection signal="gun_ammo_changed" from="Player" to="UI" method="_on_player_gun_ammo_changed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="level_up" from="Player" to="." method="_on_player_level_up"]

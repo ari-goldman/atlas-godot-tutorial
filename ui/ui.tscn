@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbuwlkbx4bbbo"]
+[gd_scene load_steps=5 format=3 uid="uid://dbuwlkbx4bbbo"]
 
 [ext_resource type="Script" uid="uid://d1m6aqhukcpf6" path="res://ui/ui.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://c44qht6gre3kn" path="res://ui/bullet.png" id="2_ks8t7"]
+[ext_resource type="Shader" uid="uid://gk4sfdvv7oib" path="res://ui/action_lines.gdshader" id="3_wl5ax"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkava"]
+shader = ExtResource("3_wl5ax")
+shader_parameter/Speed = 2.669
+shader_parameter/LineLength = 0.875
+shader_parameter/LineColor = Color(1, 1, 1, 0)
+shader_parameter/Softness = 0.621
+shader_parameter/Weirdness = 0.0
+shader_parameter/Radius = 2.0
+shader_parameter/Freq = 14.406
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_fyqef")
@@ -55,3 +66,19 @@ layout_mode = 2
 texture = ExtResource("2_ks8t7")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="ActionLines" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_vkava")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

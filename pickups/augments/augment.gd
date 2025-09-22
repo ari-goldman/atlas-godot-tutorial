@@ -25,4 +25,5 @@ func unapply():
 
 func _on_lifetime_timeout():
 	unapply()
+	done.emit()
 	queue_free()

@@ -11,6 +11,7 @@ extends Path2D
 		else:
 			call_deferred("_set_border_points")
 			call_deferred("_create_elements")
+@onready var base_border_size: Vector2 = border_size
 
 @export var border_object: PackedScene: # better have a Node2D base node...
 	set(value):
@@ -25,7 +26,7 @@ extends Path2D
 		if border_object and Engine.is_editor_hint():
 			call_deferred("_create_elements")
 		else:
-			_create_elements()
+			call_deferred("_create_elements")
 
 @export_range(0.0, 50.0) var jitter: float = 0.0:
 	set(value):

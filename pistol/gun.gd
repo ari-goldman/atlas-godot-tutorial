@@ -33,6 +33,8 @@ func shoot():
 	new_bullet.global_rotation = %"Shooting Point".global_rotation
 	%"Shooting Point".add_child(new_bullet)
 	AudioManager.play_sound(AudioManager.Sounds.WEAPON_FIRE, 1.0, 0.5)
+	%AnimationPlayer.stop(true)
+	%AnimationPlayer.play("shoot")
 	
 
 func get_closest_in_range_body() -> Node2D:
