@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0qt3he0fpv3u"]
+[gd_scene load_steps=15 format=3 uid="uid://c0qt3he0fpv3u"]
 
 [ext_resource type="PackedScene" uid="uid://dhhjdcs0kqhrx" path="res://characters/player/player.tscn" id="1_3cish"]
 [ext_resource type="Script" uid="uid://cnnidspp840pg" path="res://survivors_game.gd" id="1_qqaft"]
@@ -9,8 +9,6 @@
 [ext_resource type="Script" uid="uid://ligun6wbua8t" path="res://game_timer.gd" id="6_3uxnc"]
 [ext_resource type="PackedScene" uid="uid://dbuwlkbx4bbbo" path="res://ui/ui.tscn" id="8_3uxnc"]
 [ext_resource type="Texture2D" uid="uid://c44qht6gre3kn" path="res://ui/bullet.png" id="9_3uxnc"]
-[ext_resource type="PackedScene" uid="uid://gnvfvvfoet6r" path="res://pickups/augments/fire_rate/fire_rate_augment_pickup.tscn" id="10_l3cnu"]
-[ext_resource type="PackedScene" uid="uid://c4h4ou4ar7v77" path="res://pickups/augments/move_speed/move_speed_augment_pickup.tscn" id="11_ejye1"]
 
 [sub_resource type="Curve2D" id="Curve2D_7jj1j"]
 _data = {
@@ -108,6 +106,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.00706)
+color = Color(0.856067, 0.856067, 0.856067, 1)
 
 [node name="UI" parent="." instance=ExtResource("8_3uxnc")]
 ammo_texture = ExtResource("9_3uxnc")
@@ -221,18 +220,6 @@ libraries = {
 unique_name_in_owner = true
 wait_time = 3.0
 autostart = true
-
-[node name="FireRateAugment" parent="." instance=ExtResource("10_l3cnu")]
-position = Vector2(88, 991)
-
-[node name="FireRateAugment2" parent="." instance=ExtResource("10_l3cnu")]
-position = Vector2(81, 831)
-
-[node name="MoveSpeedAugment" parent="." instance=ExtResource("11_ejye1")]
-position = Vector2(1789, 77)
-
-[node name="MoveSpeedAugment2" parent="." instance=ExtResource("11_ejye1")]
-position = Vector2(1789, 221)
 
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
 [connection signal="augments_changed" from="Player" to="UI" method="_on_player_augments_changed"]

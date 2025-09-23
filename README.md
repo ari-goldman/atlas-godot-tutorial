@@ -99,6 +99,7 @@
 
 ### 9/22
 - added action lines that change based on player augments
-- 1.5 hours
+- added spark particles when the player's gun shoots
+- 2 hours
 
 </details>

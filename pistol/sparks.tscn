@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv7csdre4l5dx"]
+
+[sub_resource type="Gradient" id="Gradient_b7uwb"]
+offsets = PackedFloat32Array(0.246835, 0.718354, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.730676, 0.689671, 0.470588, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_donny"]
+gradient = SubResource("Gradient_b7uwb")
+width = 4
+height = 16
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Curve" id="Curve_b7uwb"]
+_data = [Vector2(0.0106383, 0.952641), 0.0, -0.0947177, 0, 0, Vector2(0.98227, 0.00151789), -2.12153, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_donny"]
+curve = SubResource("Curve_b7uwb")
+
+[sub_resource type="Gradient" id="Gradient_leb6e"]
+colors = PackedColorArray(1, 1, 1, 1, 0.852885, 0.368304, 5.77569e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j6iqh"]
+gradient = SubResource("Gradient_leb6e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b7uwb"]
+lifetime_randomness = 0.6
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 8, 1)
+spread = 15.0
+flatness = 0.079
+initial_velocity_min = 338.2
+initial_velocity_max = 338.2
+damping_min = 200.0
+damping_max = 900.0
+scale_min = 0.8
+scale_max = 1.2
+scale_over_velocity_min = 193.82
+scale_over_velocity_max = 193.82
+color_ramp = SubResource("GradientTexture1D_j6iqh")
+alpha_curve = SubResource("CurveTexture_donny")
+
+[node name="Sparks" type="GPUParticles2D"]
+amount = 64
+texture = SubResource("GradientTexture2D_donny")
+lifetime = 0.51
+explosiveness = 0.9
+randomness = 0.21
+process_material = SubResource("ParticleProcessMaterial_b7uwb")

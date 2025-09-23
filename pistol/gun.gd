@@ -36,6 +36,13 @@ func shoot():
 	%AnimationPlayer.stop(true)
 	%AnimationPlayer.play("shoot")
 	
+	var SPARK_SCENE := preload("res://pistol/sparks.tscn")
+	var sparks = SPARK_SCENE.instantiate()
+	sparks.emitting = true
+	sparks.one_shot = true
+	sparks.connect("finished", sparks.queue_free)
+	%"Shooting Point".add_child(sparks)
+	
 
 func get_closest_in_range_body() -> Node2D:
 	var enemies_in_range: Array[Node2D] = get_overlapping_bodies()
