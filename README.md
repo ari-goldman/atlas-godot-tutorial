@@ -3,20 +3,26 @@
 ### Play the game at [atlas-godot-tutorial.ari-goldman.xyz](https://atlas-godot-tutorial.ari-goldman.xyz/)
 
 ## Info
-- Soft gates
-	- leveling: enemy spawn rate is no longer tied to enemy player level, so now the player level will only make their time easier, it is not required to progress the game 
-	- augments: player can pickup augments dropped that increase their movement speed and fire rate for limited times
-- Hard gate: time
-	- augments unlock after 20 seconds
-	- charging enemies now spawn at 40 seconds in
-	- enemy difficulty is tied to time
-- Faucets and Sinks:
-	- Ammo: the player now spens ammo when they shoot (sink), and they must pickup more around the map (faucet)
-	- Physical space: the player now gains more play area as they level up (faucet), but they lose it all when dying (sink?)
+- Juice added:
+	- border expands smoothly
+	- a lot of particles
+		- level up particles
+		- gun fire particles
+		- augment pickup particles
+	- gun "recoil" (squish)
+	- audio manager
+	- music
+	- action lines indicating a player's current augments
+		- fades in with more augments collected
+		- changes color based on how many of which augment the player has
+			- more blue -\> more speed augments
+			- more red -\> more fire rate augments
 	
+
 - Total time:
 	- Week 2: ~9 hours
 	- Week 3: ~13 hours
+	- Week 4: ~9 hours
 
 ## Asset Sources
 - Tutorial:
@@ -113,5 +119,6 @@
 - adjusted spark particles
 - action lines now change to better colors depending on what augments you have
 	- will mix between blue and red when you have both augment types depending amount each of augment had
+- 4 hours (spent a lot of time tinkering with the particles)
 
 </details>
