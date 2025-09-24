@@ -37,6 +37,8 @@ func _on_player_health_depleted():
 	%SurvivedText.text = %SurvivedText.text % %Timer.seconds
 	get_tree().paused = true
 	AudioManager.play_sound(AudioManager.Sounds.PLAYER_DEATH)
+	AudioManager.fade_out_music(5.0)
+
 
 
 func _on_player_level_up():

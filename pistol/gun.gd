@@ -18,7 +18,7 @@ func _ready():
 	ammo_changed.emit(ammo)
 	fire_rate = %Timer.wait_time
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var closest_enemy = get_closest_in_range_body()
 	if closest_enemy != null:
 		look_at(closest_enemy.global_position)

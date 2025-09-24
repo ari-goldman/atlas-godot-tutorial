@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cplduw5f5kk8k"]
+[gd_scene load_steps=10 format=3 uid="uid://cplduw5f5kk8k"]
 
 [ext_resource type="Script" uid="uid://bpyklowrsffal" path="res://globals/audio_manager/audio_manager.gd" id="1_qw3el"]
 [ext_resource type="AudioStream" uid="uid://bxqwybm5k4mb1" path="res://sounds/pickup_xp.wav" id="2_hthfx"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://ccusay3onuuq2" path="res://sounds/hit.wav" id="5_qu4yp"]
 [ext_resource type="AudioStream" uid="uid://wdaioansmqe5" path="res://sounds/level_up.wav" id="6_2a5cl"]
 [ext_resource type="AudioStream" uid="uid://tqeru80j051o" path="res://sounds/shoot.wav" id="8_uf7k3"]
+[ext_resource type="AudioStream" uid="uid://dxq6h1dc2kdcr" path="res://sounds/dramatic-serious-intense-music.mp3" id="9_ea3jb"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_qw3el")
@@ -16,28 +17,50 @@ script = ExtResource("1_qw3el")
 
 [node name="XP" type="AudioStreamPlayer" parent="Pickups"]
 stream = ExtResource("2_hthfx")
+volume_db = -12.0
+bus = &"Effects"
 
 [node name="Ammo" type="AudioStreamPlayer" parent="Pickups"]
 stream = ExtResource("3_i5rk7")
+bus = &"Effects"
 
 [node name="Player" type="Node" parent="."]
 
 [node name="Death" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("2_qm7t7")
+pitch_scale = 0.63
+bus = &"Important Effects"
 
 [node name="Hurt" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("5_qu4yp")
+bus = &"Effects"
+
+[node name="Timer" type="Timer" parent="Player/Hurt"]
+wait_time = 0.1
+one_shot = true
+ignore_time_scale = true
 
 [node name="LevelUp" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("6_2a5cl")
+volume_db = -10.0
+bus = &"Important Effects"
 
 [node name="Mob" type="Node" parent="."]
 
 [node name="Death" type="AudioStreamPlayer" parent="Mob"]
 stream = ExtResource("3_qm7t7")
+bus = &"Effects"
 
 [node name="Weapon" type="Node" parent="."]
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="Weapon"]
 stream = ExtResource("8_uf7k3")
 volume_db = -7.5
+bus = &"Effects"
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("9_ea3jb")
+autoplay = true
+bus = &"Music"

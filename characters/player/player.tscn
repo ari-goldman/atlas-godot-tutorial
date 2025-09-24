@@ -36,6 +36,15 @@ radius = 21.0238
 collision_mask = 14
 platform_floor_layers = 4294901760
 script = ExtResource("1_onrkg")
+particle_colors = Dictionary[String, Color]({
+"FIRE_RATE_UP": Color(1, 0.419608, 0.352941, 0.501961),
+"LEVEL_UP": Color(0, 0.920869, 0.920869, 1),
+"SPEED_UP": Color(0.356863, 0.533333, 1, 0.501961)
+})
+
+[node name="Particles" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 9)
 
 [node name="HappyBoo" parent="." instance=ExtResource("1_4flbx")]
 unique_name_in_owner = true

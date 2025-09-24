@@ -16,6 +16,8 @@ shader_parameter/Freq = 14.406
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_fyqef")
+speed_color = Color(0, 0.618188, 0.879436, 1)
+fire_rate_color = Color(1, 0.313363, 0.339181, 1)
 
 [node name="AmmoContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true

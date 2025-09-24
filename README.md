@@ -27,6 +27,7 @@
 - Louis George Café font by Chen Yining https://www.dafont.com/louis-george-cafe.font?text=01234%3A5678
 - Equip Sound by Homemade_SFX https://pixabay.com/sound-effects/equip-sound-272428/
 - Actionlines Comic Anime Shader by EriNixie https://godotshaders.com/shader/actionlines-comic-anime/
+- Dramatic Serious Intense Music by Hitslab https://pixabay.com/music/main-title-dramatic-serious-intense-music-406394/
 
 ## Logs
 
@@ -60,7 +61,7 @@
 - 4 hours
 </details>
 
-<details open>
+<details>
 <summary>Week 3</summary>
 
 ### 9/15
@@ -101,5 +102,16 @@
 - added action lines that change based on player augments
 - added spark particles when the player's gun shoots
 - 2 hours
+
+### 9/23
+- added music
+	- music fades out on death
+- adjusted audio levels
+- added player particles
+	- emitted on augment collection and player level up
+	- each event has its own color of particle
+- adjusted spark particles
+- action lines now change to better colors depending on what augments you have
+	- will mix between blue and red when you have both augment types depending amount each of augment had
 
 </details>

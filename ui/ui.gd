@@ -3,6 +3,9 @@ extends CanvasLayer
 @export var ammo_texture: Texture2D
 var current_ammo: int = 6
 
+@export var speed_color: Color = Color.BLUE
+@export var fire_rate_color: Color = Color.RED
+
 func _ready():
 	current_ammo = %AmmoContainer.get_child_count()
 	%ActionLines.show()
@@ -37,13 +40,16 @@ func _on_player_augments_changed(number_speed, number_fire_rate):
 		action_line_tween.kill()
 		
 	var total: int = number_fire_rate + number_speed
+
+	#var color: Color = Color(
+		#1.0 - number_speed * 0.1,
+		#clampf(1.0 - total * 0.2, 0.3, 1.0),
+		#1.0 - number_fire_rate * 0.1,
+		#total * 0.175 + (0.5 if total > 0 else 0.0)
+	#)
 	
-	var color: Color = Color(
-		1.0 - number_speed * 0.1,
-		1.0 - total * 0.1,
-		1.0 - number_fire_rate * 0.1,
-		total * 0.175 + (0.5 if total > 0 else 0.0)
-	)
+	var color: Color = lerp(speed_color, fire_rate_color, 1.4 * number_fire_rate / total)
+	color.a = total * 0.175 + (0.5 if total > 0 else 0.0)
 	
 	var radius: float = 2.0 - (total * 0.1) - (0.15 if total > 0 else 0.0)
 	radius = clampf(radius, 1.6, 2.0)
