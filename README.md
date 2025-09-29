@@ -34,6 +34,7 @@
 - Equip Sound by Homemade_SFX https://pixabay.com/sound-effects/equip-sound-272428/
 - Actionlines Comic Anime Shader by EriNixie https://godotshaders.com/shader/actionlines-comic-anime/
 - Dramatic Serious Intense Music by Hitslab https://pixabay.com/music/main-title-dramatic-serious-intense-music-406394/
+- Pixel Plains Tileset by SnowHex https://snowhex.itch.io/pixel-plains
 
 ## Logs
 
@@ -93,7 +94,7 @@
 - 11 hours
 </details>
 
-<details open>
+<details>
 <summary>Week 4</summary>
 
 ### 9/17
@@ -122,3 +123,20 @@
 - 4 hours (spent a lot of time tinkering with the particles)
 
 </details>
+
+
+<details open>
+<summary>Week 5</summary>
+
+### 9/25
+- found and added tileset
+- defined layers
+- fumbled around with autotiling settings
+- 1 hour
+
+### 9/29
+- figured out and finished autotiling settings (lots of trial and error)
+- added bush layer
+- 2 hours
+
+<details>

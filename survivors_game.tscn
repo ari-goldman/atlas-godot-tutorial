@@ -97,6 +97,7 @@ random_seed = "randomness"
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -128
+visible = false
 follow_viewport_scale = 585.821
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
