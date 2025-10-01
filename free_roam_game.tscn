@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://c767us8n4eijk"]
+
+[ext_resource type="PackedScene" uid="uid://dhhjdcs0kqhrx" path="res://characters/player/player.tscn" id="1_8pobs"]
+[ext_resource type="PackedScene" uid="uid://bpuyam0leufcr" path="res://level/level.tscn" id="2_5bemv"]
+[ext_resource type="PackedScene" uid="uid://duobrbexxptt3" path="res://level/spawn_on_screen.tscn" id="3_e6o2y"]
+[ext_resource type="PackedScene" uid="uid://glfxaqt0l77q" path="res://characters/charging_mob/charging_mob.tscn" id="4_obe5g"]
+[ext_resource type="PackedScene" uid="uid://dcg2yxwctbkmn" path="res://characters/mob/mob.tscn" id="5_0pm7y"]
+[ext_resource type="PackedScene" uid="uid://c4h4ou4ar7v77" path="res://pickups/augments/move_speed/move_speed_augment_pickup.tscn" id="5_obe5g"]
+[ext_resource type="PackedScene" uid="uid://gnvfvvfoet6r" path="res://pickups/augments/fire_rate/fire_rate_augment_pickup.tscn" id="7_nt7x6"]
+
+[node name="FreeRoamGame" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Level" parent="." instance=ExtResource("2_5bemv")]
+
+[node name="Player" parent="." instance=ExtResource("1_8pobs")]
+position = Vector2(-130, 1)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -4352
+limit_top = -1150
+limit_right = 3200
+limit_bottom = 4482
+
+[node name="SpawningThings" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="MazeSlime2" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(1104, 1840)
+to_spawn = ExtResource("4_obe5g")
+times = 8
+
+[node name="MazeSlime1" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(1574, 1842)
+to_spawn = ExtResource("5_0pm7y")
+times = 8
+
+[node name="SpawnChargingSlimes2" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-2014, 710)
+to_spawn = ExtResource("4_obe5g")
+respawn = true
+times = -1
+
+[node name="SpawnChargingSlimes4" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-1292, 1436)
+to_spawn = ExtResource("4_obe5g")
+respawn = true
+times = -1
+
+[node name="SpawnChargingSlimes5" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-2372, 1242)
+to_spawn = ExtResource("4_obe5g")
+respawn = true
+times = -1
+
+[node name="SpawnChargingSlimes6" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-1940, 3145)
+to_spawn = ExtResource("4_obe5g")
+respawn = true
+times = -1
+
+[node name="SpawnChargingSlimes7" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-3140, 2333)
+to_spawn = ExtResource("4_obe5g")
+respawn = true
+times = -1
+
+[node name="SpawnChargingSlimes8" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-3383, 1503)
+to_spawn = ExtResource("4_obe5g")
+respawn = true
+times = -1
+
+[node name="SpawnChargingSlimes9" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-2502, 540)
+to_spawn = ExtResource("4_obe5g")
+respawn = true
+times = -1
+
+[node name="SpawnChargingSlimes10" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-2102, 1820)
+to_spawn = ExtResource("4_obe5g")
+respawn = true
+times = -1
+
+[node name="SpawnSpeed" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(1342, 1732)
+to_spawn = ExtResource("5_obe5g")
+respawn = true
+times = 2
+
+[node name="SpawnSpeed2" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-386, 2170)
+to_spawn = ExtResource("5_obe5g")
+
+[node name="SpawnFireRate" parent="SpawningThings" instance=ExtResource("3_e6o2y")]
+position = Vector2(-388, 904)
+to_spawn = ExtResource("7_nt7x6")
+respawn = true
+times = 2

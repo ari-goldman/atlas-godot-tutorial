@@ -74,8 +74,8 @@ Settings/Show_Tooltips=true
 
 [application]
 
-config/name="Ari Goldman"
-run/main_scene="uid://c0qt3he0fpv3u"
+config/name="AMG Survivors"
+run/main_scene="uid://c767us8n4eijk"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 
@@ -105,6 +105,10 @@ folder_colors={
 "res://globals/": "orange",
 "res://sounds/": "teal"
 }
+
+[global_group]
+
+Player=""
 
 [input]
 

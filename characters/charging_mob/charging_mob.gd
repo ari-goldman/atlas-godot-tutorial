@@ -11,14 +11,14 @@ var times := {
 	State.COOLDOWN: 0.5
 }
 
-var health := 2
+@export var health := 2
 var current_state := State.MOVING
 var move_speed = 300.0
 var charge_speed = 750.0
 var stateTime := 0.0
 var charge_target: Vector2 = Vector2.INF
 const CHARGE_DISTANCE = 500.0
-@onready var player: Player = get_node("/root/Game/Player")
+@onready var player: Player = get_tree().get_nodes_in_group("Player")[0]
 
 func _ready():
 	%Slime.play_walk()

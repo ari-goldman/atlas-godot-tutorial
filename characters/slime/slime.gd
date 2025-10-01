@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node2D
 
 @export var color_modulate: Color = Color.WHITE:

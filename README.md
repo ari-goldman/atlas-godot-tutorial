@@ -23,6 +23,7 @@
 	- Week 2: ~9 hours
 	- Week 3: ~13 hours
 	- Week 4: ~9 hours
+	- Week 5: ~7 hours
 
 ## Asset Sources
 - Tutorial:
@@ -138,5 +139,13 @@
 - figured out and finished autotiling settings (lots of trial and error)
 - added bush layer
 - 2 hours
+
+### 9/30
+- added hitboxes to tilemap
+- built out level
+- added enemy spawners that spawn enemies when entering the screen
+- added augment spawners that spawn enemies when entering the screen
+- flowers
+- 4 hours
 
 <details>

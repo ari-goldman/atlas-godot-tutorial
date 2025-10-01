@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://duobrbexxptt3"]
+
+[ext_resource type="Script" uid="uid://bikxcynr45eck" path="res://spawn_on_screen.gd" id="1_8q3sk"]
+
+[node name="SpawnOnScreen" type="VisibleOnScreenNotifier2D"]
+rect = Rect2(-50, -50, 100, 100)
+script = ExtResource("1_8q3sk")
+
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered"]

@@ -3,7 +3,7 @@ extends Node
 
 signal done
 
-@export var lifetime: float = 1.0
+@export var lifetime: float = 0
 var player: Player = null
 
 func _init(_lifetime: float):

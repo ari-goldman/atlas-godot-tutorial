@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var health = 3
-@onready var player: Player = get_node("/root/Game/Player")
+@onready var player: Player = get_tree().get_nodes_in_group("Player")[0]
 @export var size_mult: float = 1.0
 
 const augment_drops: Array[PackedScene] = [

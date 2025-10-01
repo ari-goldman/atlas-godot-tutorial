@@ -8,7 +8,7 @@ var fire_rate: float:
 		fire_rate = value
 		%Timer.wait_time = fire_rate
 
-var ammo: int = 8:
+var ammo: int = 100_000: # 8:
 	set(value):
 		ammo = value
 		ammo_changed.emit(ammo)
