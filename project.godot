@@ -74,8 +74,8 @@ Settings/Show_Tooltips=true
 
 [application]
 
-config/name="Ari Goldman"
-run/main_scene="uid://c0qt3he0fpv3u"
+config/name="Survivors Game"
+run/main_scene="uid://cvhyplek3fhdv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 

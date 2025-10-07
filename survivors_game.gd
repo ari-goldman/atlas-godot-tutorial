@@ -1,9 +1,16 @@
+class_name SurvivorsGame
 extends Node2D
 
 #@export var horde_time: int = 15
 #@export var horde_spawn_time: float = 0.1
 @export var difficulty_increase_time: int = 20
+var difficulty: float
 
+func _ready():
+	%MobSpawnTimer.wait_time *= GlobalStats.difficulties[GlobalStats.selected_difficulty]
+	get_tree().paused = false
+	
+	
 
 
 func _spawn_mob():
@@ -33,8 +40,8 @@ func _on_mob_spawn_timer_timeout():
 
 
 func _on_player_health_depleted():
-	%GameOver.visible = true
-	%SurvivedText.text = %SurvivedText.text % %Timer.seconds
+	%GameOver.show()
+	%SurvivedText.text = "but you survived %d seconds" % %Timer.seconds
 	get_tree().paused = true
 	AudioManager.play_sound(AudioManager.Sounds.PLAYER_DEATH)
 	AudioManager.fade_out_music(5.0)
@@ -97,3 +104,12 @@ func _on_ammo_spawn_timer_timeout():
 	ammo.position = spawn_position
 	add_child(ammo)
 	
+	
+
+
+func _on_to_main_menu_pressed():
+	get_tree().paused = false
+	var new_scene = load("res://ui/menu.tscn").instantiate()
+	self.queue_free()  # Remove current scene
+	get_tree().root.add_child(new_scene)
+	get_tree().current_scene = new_scene

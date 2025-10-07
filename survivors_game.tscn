@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bvitfb3nuemn5" path="res://fonts/Louis George Cafe.ttf" id="4_edxvn"]
 [ext_resource type="FontFile" uid="uid://vlymi52pe1rp" path="res://fonts/Louis George Cafe Italic.ttf" id="5_getvi"]
 [ext_resource type="Script" uid="uid://ligun6wbua8t" path="res://game_timer.gd" id="6_3uxnc"]
-[ext_resource type="PackedScene" uid="uid://dbuwlkbx4bbbo" path="res://ui/ui.tscn" id="8_3uxnc"]
+[ext_resource type="PackedScene" uid="uid://dbuwlkbx4bbbo" path="res://ui/ui_main_game.tscn" id="8_3uxnc"]
 [ext_resource type="Texture2D" uid="uid://c44qht6gre3kn" path="res://ui/bullet.png" id="9_3uxnc"]
 
 [sub_resource type="Curve2D" id="Curve2D_7jj1j"]
@@ -135,6 +135,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver/ColorRect/CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 11
 
 [node name="YouDiedText" type="Label" parent="GameOver/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -151,6 +152,14 @@ theme_override_fonts/font = ExtResource("5_getvi")
 theme_override_font_sizes/font_size = 50
 text = "but you survived %d seconds"
 horizontal_alignment = 1
+
+[node name="ToMainMenu" type="Button" parent="GameOver/ColorRect/CenterContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_mx11s")
+theme_override_font_sizes/font_size = 30
+text = "Return to main menu"
 
 [node name="MobSpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -221,6 +230,7 @@ unique_name_in_owner = true
 wait_time = 3.0
 autostart = true
 
+[connection signal="pressed" from="GameOver/ColorRect/CenterContainer/VBoxContainer/ToMainMenu" to="." method="_on_to_main_menu_pressed"]
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
 [connection signal="augments_changed" from="Player" to="UI" method="_on_player_augments_changed"]
 [connection signal="gun_ammo_changed" from="Player" to="UI" method="_on_player_gun_ammo_changed"]

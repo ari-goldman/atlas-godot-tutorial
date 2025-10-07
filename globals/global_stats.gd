@@ -1,5 +1,8 @@
 extends Node
 
+var selected_difficulty: int = 1
+var difficulties := [2.0, 1.0, 0.5, 0.25]
+
 ## Mobs
 var red_slime_time: int = 40 # minimum time for red slimes to spawn (seconds)
 

@@ -45,6 +45,7 @@ extends Path2D
 			_create_elements()
 
 func _ready():
+	border_size = base_border_size
 	if border_object:
 		call_deferred("_create_elements")
 	else:

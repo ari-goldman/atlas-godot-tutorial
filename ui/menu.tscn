@@ -1,0 +1,206 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvhyplek3fhdv"]
+
+[ext_resource type="Script" uid="uid://dbhhvby8cucej" path="res://ui/menu.gd" id="1_0dkrt"]
+[ext_resource type="Theme" uid="uid://bvcjmgl1bh8mc" path="res://ui/theme.tres" id="1_t7e0r"]
+
+[node name="Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0dkrt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.333945, 0.277703, 0.324674, 1)
+
+[node name="MainMenu" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t7e0r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MainMenu/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme = ExtResource("1_t7e0r")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "Survivors Game"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options
+"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit
+"
+
+[node name="Settings" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Settings/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme = ExtResource("1_t7e0r")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "Settings"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="MasterVolume" type="HBoxContainer" parent="CanvasLayer/Settings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t7e0r")
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/VBoxContainer/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("1_t7e0r")
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/VBoxContainer/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_t7e0r")
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="MusicVolume" type="HBoxContainer" parent="CanvasLayer/Settings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t7e0r")
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/VBoxContainer/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("1_t7e0r")
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/VBoxContainer/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_t7e0r")
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="EffectVolume" type="HBoxContainer" parent="CanvasLayer/Settings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t7e0r")
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/VBoxContainer/EffectVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("1_t7e0r")
+text = "Effects Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Settings/VBoxContainer/EffectVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_t7e0r")
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="Difficulty" type="HBoxContainer" parent="CanvasLayer/Settings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t7e0r")
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/VBoxContainer/Difficulty"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("1_t7e0r")
+text = "Difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/VBoxContainer/Difficulty"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Less" type="Button" parent="CanvasLayer/Settings/VBoxContainer/Difficulty/HBoxContainer"]
+layout_mode = 2
+text = "<"
+
+[node name="Difficulty" type="Button" parent="CanvasLayer/Settings/VBoxContainer/Difficulty/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 12.5
+text = "Medium"
+
+[node name="More" type="Button" parent="CanvasLayer/Settings/VBoxContainer/Difficulty/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Settings/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_t7e0r")
+theme_override_font_sizes/font_size = 30
+text = "Save and Return"
+
+[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]
+[connection signal="value_changed" from="CanvasLayer/Settings/VBoxContainer/MasterVolume/HSlider" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Settings/VBoxContainer/MusicVolume/HSlider" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Settings/VBoxContainer/EffectVolume/HSlider" to="." method="_on_effects_value_changed"]
+[connection signal="button_up" from="CanvasLayer/Settings/VBoxContainer/Difficulty/HBoxContainer/Less" to="." method="_on_less_button_up"]
+[connection signal="button_up" from="CanvasLayer/Settings/VBoxContainer/Difficulty/HBoxContainer/More" to="." method="_on_more_button_up"]
+[connection signal="button_up" from="CanvasLayer/Settings/VBoxContainer/MarginContainer/BackButton" to="." method="_on_back_button_button_up"]
