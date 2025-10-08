@@ -8,6 +8,7 @@ enum Sounds {
 	PICKUP_AMMO,
 	WEAPON_FIRE,
 	MOB_DEATH,
+	MUSIC,
 }
 
 @onready var sound_to_node: Dictionary[Sounds, AudioStreamPlayer] = {
@@ -18,11 +19,13 @@ enum Sounds {
 	Sounds.PICKUP_AMMO: $Pickups/Ammo,
 	Sounds.WEAPON_FIRE: $Weapon/ShootSound,
 	Sounds.MOB_DEATH: $Mob/Death,
+	Sounds.MUSIC: $Music/MainMusic,
 }
 
 func fade_out_music(time: float):
+	var player: AudioStreamPlayer = sound_to_node[Sounds.MUSIC]
 	var music_tween = get_tree().create_tween()
-	music_tween.tween_property($Music/MainMusic, "volume_db", -80.0, time)
+	music_tween.tween_property(player, "volume_db", -80.0, time)
 	music_tween.tween_callback(Callable($Music, "stop"))
 
 func play_sound(sound: Sounds, pitch_scale = 1.0, random_pitch_range = 0.0):
@@ -37,3 +40,12 @@ func play_sound(sound: Sounds, pitch_scale = 1.0, random_pitch_range = 0.0):
 	player.pitch_scale = pitch_scale + randf_range(-random_pitch_range, random_pitch_range)
 	player.play()
 	player.pitch_scale = previous_pitch_scale
+
+func stop_sound(sound: Sounds):
+	var player: AudioStreamPlayer = sound_to_node[sound]
+	if player.playing:
+		player.stop()
+		
+func stop_all_audio():
+	for s: Sounds in Sounds.values():
+		stop_sound(s)

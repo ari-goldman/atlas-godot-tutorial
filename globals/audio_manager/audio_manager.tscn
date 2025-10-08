@@ -62,5 +62,4 @@ bus = &"Effects"
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("9_ea3jb")
-autoplay = true
 bus = &"Music"

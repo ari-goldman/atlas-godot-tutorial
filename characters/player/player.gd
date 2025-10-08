@@ -16,6 +16,8 @@ signal gun_ammo_changed(_ammo: int)
 
 var health := 50
 var level: int = 0
+var target_click_move: Vector2
+var click_move_enabled: bool = false
 
 var speed: float = 600.0
 
@@ -24,8 +26,22 @@ func _ready():
 		if augment is Augment:
 			augment.apply(self)
 
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		click_move_enabled = event.is_pressed()
+		#if event.is_pressed():
+			#target_click_move = get_global_mouse_position()
+	
+
 func _physics_process(delta):
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if !direction.is_zero_approx() and click_move_enabled:
+		click_move_enabled = false
+	elif click_move_enabled:
+		target_click_move = get_global_mouse_position()
+		if global_position.distance_to(target_click_move) > speed * delta:
+			direction = global_position.direction_to(target_click_move)
+
 	velocity = direction * speed
 	move_and_slide()
 	
@@ -44,8 +60,8 @@ func _physics_process(delta):
 		
 	
 		if health <= 0.0:
-			health_depleted.emit()
 			_clear_augments()
+			health_depleted.emit()
 			
 
 
@@ -103,9 +119,10 @@ func _on_pickup_collector_move_speed_augment_collected():
 	_play_particle(particle_colors["SPEED_UP"])
 
 func _clear_augments():
-	for child: Augment in %Augments.get_children():
-		child.unapply()
-		child.queue_free()
+	for child in %Augments.get_children():
+		if child is Augment:
+			child.unapply()
+			child.queue_free()
 	_update_augment_count()
 
 func _update_augment_count():

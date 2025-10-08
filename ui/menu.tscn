@@ -19,10 +19,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.333945, 0.277703, 0.324674, 1)
+color = Color(0.282085, 0.318586, 0.345435, 1)
 
 [node name="MainMenu" type="CenterContainer" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,24 +46,27 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Options
-"
+text = "  Settings  "
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Quit
 "
 
 [node name="Settings" type="CenterContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -195,9 +197,9 @@ theme = ExtResource("1_t7e0r")
 theme_override_font_sizes/font_size = 30
 text = "Save and Return"
 
-[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/PlayButton" to="." method="_on_play_button_button_up"]
-[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
-[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/MainMenu/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]
 [connection signal="value_changed" from="CanvasLayer/Settings/VBoxContainer/MasterVolume/HSlider" to="." method="_on_master_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Settings/VBoxContainer/MusicVolume/HSlider" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Settings/VBoxContainer/EffectVolume/HSlider" to="." method="_on_effects_value_changed"]

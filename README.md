@@ -3,26 +3,24 @@
 ### Play the game at [atlas-godot-tutorial.ari-goldman.xyz](https://atlas-godot-tutorial.ari-goldman.xyz/)
 
 ## Info
-- Juice added:
-	- border expands smoothly
-	- a lot of particles
-		- level up particles
-		- gun fire particles
-		- augment pickup particles
-	- gun "recoil" (squish)
-	- audio manager
-	- music
-	- action lines indicating a player's current augments
-		- fades in with more augments collected
-		- changes color based on how many of which augment the player has
-			- more blue -\> more speed augments
-			- more red -\> more fire rate augments
-	
+- Added main menu
+- Added settings menu
+	- 3 volume sliders: master, music, and effects
+	- Difficulty selector
+- Can now return to main menu and restart the game on death
+- Mouse controls (click to move to mouse)
+
+<img src=UI_wireframe.jpg width=500px> \
+(apologies for the lack of design skills)
+
+---
 
 - Total time:
 	- Week 2: ~9 hours
 	- Week 3: ~13 hours
 	- Week 4: ~9 hours
+	- Week 5: ~6 hours (see level branch)
+	- Week 6: ~8 hours
 
 ## Asset Sources
 - Tutorial:
@@ -93,7 +91,7 @@
 - 11 hours
 </details>
 
-<details open>
+<details>
 <summary>Week 4</summary>
 
 ### 9/17
@@ -120,5 +118,36 @@
 - action lines now change to better colors depending on what augments you have
 	- will mix between blue and red when you have both augment types depending amount each of augment had
 - 4 hours (spent a lot of time tinkering with the particles)
+
+</details>
+
+
+<details>
+<summary>Week 5</summary>
+See level branch
+</details>
+
+<details open>
+<summary>Week 6</summary>
+
+### 10/5
+- made wireframe
+- started implementing main menu
+- 1 hour
+
+### 10/6
+- finished main menu layout
+- worked on settings menu
+- 1 hour
+
+### 10/7
+- finalized theming
+- finished settings menu
+	- volume sliders work
+	- difficulty slector works
+- added mouse controls
+- fixed audio bugs on scene change
+- fixed scene changes crashing the game
+- 6 hours
 
 </details>

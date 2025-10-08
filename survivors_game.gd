@@ -9,6 +9,9 @@ var difficulty: float
 func _ready():
 	%MobSpawnTimer.wait_time *= GlobalStats.difficulties[GlobalStats.selected_difficulty]
 	get_tree().paused = false
+	AudioManager.stop_sound(AudioManager.Sounds.MUSIC)
+	AudioManager.play_sound(AudioManager.Sounds.MUSIC)
+	#%Player._clear_augments()
 	
 	
 
@@ -88,6 +91,8 @@ func _on_timer_update(_seconds):
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		_on_player_level_up()
+	if event.is_action_pressed("ui_cancel"):
+		_on_to_main_menu_pressed()
 
 
 func _on_ammo_spawn_timer_timeout():
@@ -108,6 +113,7 @@ func _on_ammo_spawn_timer_timeout():
 
 
 func _on_to_main_menu_pressed():
+	AudioManager.stop_all_audio()
 	get_tree().paused = false
 	var new_scene = load("res://ui/menu.tscn").instantiate()
 	self.queue_free()  # Remove current scene
