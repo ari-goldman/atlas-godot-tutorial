@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://do8qrghbs43jb"]
+
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://b1g2j35nvir6a" path="res://node_2d.gd" id="1_0hol4"]
+[ext_resource type="PackedScene" uid="uid://bedfuu4x0xntb" path="res://pistol/gun.tscn" id="2_0hol4"]
+[ext_resource type="PackedScene" uid="uid://dcg2yxwctbkmn" path="res://characters/mob/mob.tscn" id="2_epypp"]
+[ext_resource type="PackedScene" uid="uid://dhhjdcs0kqhrx" path="res://characters/player/player.tscn" id="2_kdubu"]
+[ext_resource type="PackedScene" uid="uid://ejmejnuvxano" path="res://pickups/xp/xp.tscn" id="6_d21ai"]
+
+[sub_resource type="Animation" id="Animation_kdubu"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_walk_animation"
+}, {
+"args": [],
+"method": &"play_idle_animation"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 0.435275),
+"update": 0,
+"values": [Vector2(-100, 608), Vector2(760, 608)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Mob:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 0.574349),
+"update": 0,
+"values": [Vector2(2040, 608), Vector2(1160, 608)]
+}
+
+[sub_resource type="Animation" id="Animation_d21ai"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(760, 608)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Mob:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1160, 608)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d21ai"]
+_data = {
+&"RESET": SubResource("Animation_d21ai"),
+&"new_animation": SubResource("Animation_kdubu")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0hol4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Player" parent="." instance=ExtResource("2_kdubu")]
+process_mode = 4
+visible = false
+position = Vector2(731, 523)
+
+[node name="HappyBoo" parent="." instance=ExtResource("1_0e48y")]
+position = Vector2(760, 608)
+scale = Vector2(2, 2)
+
+[node name="Gun" parent="HappyBoo" instance=ExtResource("2_0hol4")]
+process_mode = 4
+visible = false
+position = Vector2(-13, -56)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="HappyBoo"]
+libraries = {
+&"": SubResource("AnimationLibrary_d21ai")
+}
+
+[node name="Mob" parent="." instance=ExtResource("2_epypp")]
+position = Vector2(1160, 608)
+scale = Vector2(2, 2)
+
+[node name="XP" parent="." instance=ExtResource("6_d21ai")]
+position = Vector2(1146, 638)
+
+[node name="XP3" parent="." instance=ExtResource("6_d21ai")]
+position = Vector2(1217, 492)
+
+[node name="XP4" parent="." instance=ExtResource("6_d21ai")]
+position = Vector2(1181, 565)
+
+[node name="XP5" parent="." instance=ExtResource("6_d21ai")]
+position = Vector2(1084, 559)
+
+[node name="XP6" parent="." instance=ExtResource("6_d21ai")]
+position = Vector2(1125, 472)
